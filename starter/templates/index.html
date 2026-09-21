@@ -6,13 +6,50 @@
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
-  </div>
+  <header class="page-header">
+    <h1>Sudoku</h1>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">&#9788;</button>
+  </header>
+
+  <main>
+    <section class="game-shell" aria-label="Sudoku game">
+      <aside class="side-panel left-panel">
+        <div class="difficulty-selector">
+          <span class="control-label">Difficulty:</span>
+          <select id="difficulty-select" class="difficulty-btn" aria-label="Difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <button id="new-game" class="secondary-action" type="button">New Game</button>
+      </aside>
+
+      <section class="board-column">
+        <div id="sudoku-board" aria-label="Sudoku board"></div>
+        <div class="timer" aria-live="polite">Time: <span id="timer">00:00</span></div>
+      </section>
+
+      <aside class="side-panel right-panel">
+        <button id="check-solution" type="button">Check</button>
+        <button id="hint" type="button">Hint</button>
+      </aside>
+    </section>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <section class="scoreboard" aria-labelledby="scoreboard-title">
+      <h2 id="scoreboard-title">Top 10 Fastest Times</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Rank</th><th>Name</th><th>Time</th><th>Level</th><th>Hints</th></tr>
+          </thead>
+          <tbody id="scoreboard-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
   <script src="/static/main.js"></script>
 </body>
 </html>
